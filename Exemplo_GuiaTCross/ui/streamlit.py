@@ -259,6 +259,41 @@ def render_sidebar():
         
         st.markdown("---")
         
+        # Configuração do veículo
+        st.subheader("🚗 Configuração")
+        
+        # Inicializar valores padrão no session_state se não existirem
+        if "ano_veiculo" not in st.session_state:
+            st.session_state.ano_veiculo = "2024"
+        if "versao_veiculo" not in st.session_state:
+            st.session_state.versao_veiculo = "200 TSI Comfortline"
+        
+        ano = st.selectbox(
+            "Ano:",
+            ["2024", "2023", "2022", "2021", "2020", "2019"],
+            index=0,
+            key="ano_veiculo"
+        )
+        
+        versao = st.selectbox(
+            "Versão:",
+            [
+                "200 TSI Comfortline",
+                "200 TSI Highline", 
+                "250 TSI Highline",
+                "1.0 TSI Sense",
+                "1.6 Sense",
+                "1.6 Comfortline"
+            ],
+            index=0,
+            key="versao_veiculo"
+        )
+        
+        # Exibir configuração selecionada de forma compacta
+        st.info(f"**T-Cross**\n{versao}\n{ano}")
+        
+        st.markdown("---")
+        
         # Controles da conversa
         st.subheader("💬 Controles")
         
@@ -287,7 +322,9 @@ def render_main_chat():
     st.markdown("""
     <div class="vw-header">
         <div class="vw-title">🚗 T-Cross Assistant</div>
-        <div class="vw-subtitle">Seu assistente virtual especializado no VW T-Cross</div>
+        <div class="vw-subtitle">
+            Seu assistente virtual especializado no VW T-Cross
+        </div>
     </div>
     """, unsafe_allow_html=True)
     
@@ -304,7 +341,8 @@ def render_main_chat():
                 <h2 style="color: #005ea6; margin-bottom: 1rem;">
                     🚗 Bem-vindo ao T-Cross Assistant!
                 </h2>
-                <p style="color: #6c757d; font-size: 1.1rem; margin-bottom: 2rem;">
+                <p style="color: #6c757d; font-size: 1.1rem; 
+                   margin-bottom: 2rem;">
                     Seu assistente virtual especializado no VW T-Cross
                 </p>
             </div>
@@ -354,39 +392,12 @@ def render_input_area():
     """Renderiza a área de input do usuário"""
     st.markdown("---")
     
-    # Seleção de ano e versão
-    st.subheader("🚗 Configuração do Veículo")
-    
-    col_ano, col_versao = st.columns(2)
-    
-    with col_ano:
-        ano = st.selectbox(
-            "Ano do T-Cross:",
-            ["2024", "2023", "2022", "2021", "2020", "2019"],
-            index=0,
-            key="ano_veiculo"
-        )
-    
-    with col_versao:
-        versao = st.selectbox(
-            "Versão:",
-            [
-                "200 TSI Comfortline",
-                "200 TSI Highline", 
-                "250 TSI Highline",
-                "1.0 TSI Sense",
-                "1.6 Sense",
-                "1.6 Comfortline"
-            ],
-            index=0,
-            key="versao_veiculo"
-        )
-    
-    # Exibir configuração selecionada
-    st.info(f"🚗 **Configuração selecionada:** T-Cross {versao} {ano}")
-    
     # Campo de pergunta
     st.subheader("💬 Sua Pergunta")
+    
+    # Obter configuração da sidebar
+    ano = st.session_state.get("ano_veiculo", "2024")
+    versao = st.session_state.get("versao_veiculo", "200 TSI Comfortline")
     
     col1, col2 = st.columns([6, 2])
     
@@ -446,7 +457,8 @@ def main():
     # Informações na parte inferior
     st.markdown("---")
     st.info(
-        "💡 **Como usar:** Digite sua pergunta e pressione Enter ou clique em Enviar\n\n"
+        "💡 **Como usar:** Digite sua pergunta e pressione Enter ou "
+        "clique em Enviar\n\n"
         "🚗 **T-Cross Assistant** | 🤖 Powered by AI | **Volkswagen**"
     )
 
