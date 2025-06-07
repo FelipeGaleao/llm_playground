@@ -1,0 +1,15 @@
+[project]
+name = "rag"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "black>=25.1.0",
+    "dotenv>=0.9.9",
+    "faiss-cpu>=1.11.0",
+    "langchain>=0.3.25",
+    "langchain-community>=0.3.24",
+    "langchain-openai>=0.3.21",
+    "openai>=1.84.0",
+]

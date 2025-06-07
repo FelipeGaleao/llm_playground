@@ -1,0 +1,394 @@
+                                                                   1
+
+
+
+
+                             Boeing 737 NG
+                              LIMITATIONS
+                               Versão B737-L-001
+                             SUL LINHAS AÉREAS VIRTUAIS
+
+
+
+
+Data de emissão: 13/05/2025
+Revisado por: Lucas Ferrão
+
+
+
+
+SUL LINHAS AÉREAS VIRTUAIS         FOR SIMULATION ONLY    B737-L-001
+                                                                     2
+
+
+REVISÕES
+
+
+          VERSÃO                   DATA              REVISÃO
+
+       B737-L-001              13/05/2025          Lucas Ferrão
+
+
+
+
+SUL LINHAS AÉREAS VIRTUAIS   FOR SIMULATION ONLY            B737-L-001
+                                                                             3
+
+
+LIMITATIONS
+
+This    chapter contains:
+   ●​   Airplane Flight Manual (AFM) limitations
+   ●​   AFM operational information
+   ●​   Non-AFM operational information.
+
+Limitations and operational information are included if they are:
+   ●​ operationally significant
+   ●​ required by FAA Airworthiness Directive
+   ●​ required by another regulatory requirement.
+
+Limitations and operational information are not included if they
+are:
+   ●​ incorporated into FCOM normal, supplementary, or non-normal
+      procedures, with a few exceptions
+   ●​ shown on a placard, display, or other marking.
+
+Limitations and operational information listed in this chapter
+that must be memorized (memory items) are marked with a (#)
+symbol. They meet the following criterion - flight crew access by
+reference cannot assure timely compliance, e.g., Maximum Takeoff
+and Landing Tailwind Component. They need only be memorized to the
+extent that compliance is assured. Knowing the exact wording of
+the limitation is not required.
+
+Assuming that the remaining items are available to the flight crew
+by reference, they do not need to be memorized.
+
+AIRPLANE GENERAL
+
+
+AFM LIMITATIONS
+
+
+Runway Slope                             +/- 2%
+
+# Maximum Takeoff and Landing Tailwind
+                                         10 knots
+Component
+
+Maximum Speeds                           Observe gear and flap placards
+
+Maximum Operating Altitude               41,000 feet
+
+Maximum Takeoff and Landing Altitude     8,400 feet
+
+Maximum   flight  operating   latitude  is   dependent  on   the
+configuration of the Magnetic Variation tables in the ADIRU as
+follows: 82º South and 82º South, except for the region between
+80° West and 130° West longitude, the maximum flight operating
+latitude is 70º North, and the region between 120º East and 160º
+East longitude, the maximum flight operating latitude is 60°
+South.
+
+
+
+SUL LINHAS AÉREAS VIRTUAIS   FOR SIMULATION ONLY                    B737-L-001
+                                                                                    4
+
+
+AFM OPERATIONAL INFORMATION
+
+# Severe Turbulent Air Penetration speed is 280 KIAS / .76M,
+whichever is lower. Applicable to Climb and Descent only. During
+Cruise, refer to Severe Turbulence Supplementary Procedure.
+
+NON-AFM OPERATIONAL INFORMATION
+
+# Do not operate HF radios during refueling operations.
+
+ALTITUDE DISPLAY LIMITS FOR RVSM OPERATIONS
+
+Standby altimeters do not meet altimeter accuracy requirements of
+RVSM airspace.
+
+The maximum allowable in-flight difference between Captain and
+First Officer altitude displays for RVSM operations is 200 feet.
+
+The maximum allowable on-the-ground altitude display differences
+for RVSM operations are:
+
+                                                         Max Difference Between
+    Field             Max Difference Between
+                                                         Captains or F/O & Field
+  Elevation               Captains & F/O
+                                                                Elevation
+
+ Sea Level to
+                                50 feet                          75 feet
+  5,000 feet
+
+  5,001 to
+                                60 feet                          75 feet
+ 10,000 feet
+
+
+WEIGHT LIMITATIONS
+
+
+          Maximum Taxi Weight                               79,243 kg
+
+        Maximum Takeoff Weight                              79,333 kg
+
+        Maximum Landing Weight                              66,361 kg
+
+      Maximum Zero Fuel Weight                              59,729 kg
+
+
+AIR SYSTEMS
+
+AFM LIMITATIONS
+
+The maximum      cabin       differential pressure (relief valves) is 9.1
+psi.
+
+NON-AFM OPERATIONAL INFORMATION
+
+With either one or both engine bleed air switches ON, do not
+operate the air conditioning packs in HIGH for takeoff, approach
+or landing.
+
+
+SUL LINHAS AÉREAS VIRTUAIS         FOR SIMULATION ONLY                     B737-L-001
+                                                                    5
+
+
+NOTE: The fire protection Non-Normal procedures take precedence
+over the statement regarding no air conditioning pack in HIGH
+during  takeoff, approach, or landing. The CARGO FIRE and
+SMOKE/FUMES   REMOVAL  checklists   require the   Operating  PACK
+switch(es) HIGH. Switch(es) need to be placed in HIGH in order to
+increase ventilation for smoke removal.
+
+AUTOPILOT/FLIGHT DIRECTOR SYSTEM
+
+AFM LIMITATIONS
+
+# Use of aileron trim with the autopilot engaged is prohibited.
+
+# Do not engage the autopilot for takeoff below 400 feet AGL.
+
+# For single channel operation during approach,      the   autopilot
+shall not remain engaged below 50 feet AGL.
+
+# Maximum allowable wind speeds when landing weather minima are
+predicated on autoland operations:
+   ●​ Headwind: 25 knots
+   ●​ Crosswind: 20 knots
+   ●​ Tailwind: 10 knots.
+
+# Maximum and minimum glide slope angles for Autoland are 3.25
+degrees and 2.5 degrees, respectively.
+
+# Autoland capability may only be used with flaps 30 or 40 and
+both engines operative.
+
+NON-AFM OPERATIONAL INFORMATION
+
+# Do not use LVL CHG on final approach below 1000 feet AFE.
+
+COMMUNICATIONS
+
+AFM LIMITATIONS
+
+Do not use VHF-3 (if installed for voice communication) for ATC
+communications with ACARS operational.
+
+Flights predicated on the use of the following HF frequencies are
+prohibited: 29.489 and 29.490 (MHz).
+
+NON-AFM OPERATIONAL INFORMATION
+
+Use the VHF radio connected to the top of the fuselage antenna for
+primary ATC communications on the ground.
+
+
+
+
+SUL LINHAS AÉREAS VIRTUAIS   FOR SIMULATION ONLY           B737-L-001
+                                                                    6
+
+
+ENGINES AND APU
+
+AFM LIMITATIONS
+
+ENGINE LIMIT DISPLAY MARKINGS
+
+Maximum and minimum limits are red.
+
+Caution limits are amber.
+
+ENGINE IGNITION
+
+Engine ignition must be on for:
+   ●​ takeoff
+   ●​ landing
+   ●​ operation in heavy rain
+   ●​ anti-ice operation.
+
+THRUST
+
+Operation with assumed temperature reduced takeoff thrust is not
+permitted with anti-skid inoperative.
+
+REVERSE THRUST
+
+#Intentional selection of reverse thrust in flight is prohibited.
+
+APU
+
+#Inflight - APU bleed + electrical load: max alt 10,000 ft.
+
+#Ground only - APU bleed + electrical load: max alt 15,000 ft.
+
+#APU bleed: max alt 17,000 ft.
+
+#APU electrical load: max alt 41,000 ft.
+
+NON-AFM OPERATIONAL INFORMATION
+
+APU bleed valve must be closed when:
+   ●​ ground air connected and isolation valve open
+   ●​ engine no. 1 bleed valve open
+   ●​ isolation and engine no. 2 bleed valves open.
+
+APU bleed valve may be open during engine start, but avoid engine
+power above idle.
+
+After three consecutive aborted start attempts, a fifteen-minute
+cooling period is required.
+
+Run the APU for two full minutes before using it as a bleed air
+source.
+
+
+SUL LINHAS AÉREAS VIRTUAIS   FOR SIMULATION ONLY          B737-L-001
+                                                                           7
+
+
+FLIGHT CONTROLS
+
+AFM LIMITATIONS
+
+# The maximum altitude with flaps extended is 20,000 ft.
+
+# Holding in icing conditions with flaps extended is prohibited.
+
+In flight, do not extend the SPEED BRAKE lever beyond the FLIGHT
+DETENT.
+
+# Avoid rapid and large alternating control inputs, especially in
+combination with large changes in pitch, roll, or yaw (e.g., large
+side slid angles) as they may result in structural failure at any
+speed, including below VA.
+
+NON-AFM OPERATIONAL INFORMATION
+
+# Do not deploy the speed brakes in flight at radio altitudes less
+than 1,000 feet.
+
+Alternate flap duty cycle:
+   ●​ When extending or retracting flaps with the ALTERNATE FLAPS
+      position switch, allow 15 seconds after releasing the
+      ALTERNATE FLAPS position switch before moving the switch
+      again to avoid damage to the alternate flap motor clutch.
+   ●​ After a complete extend/retract cycle, i.e., 0 to 15 and back
+      to 0, allow 5 minutes cooling before attempting another
+      extension.
+
+FLIGHT MANAGEMENT, NAVIGATION
+
+AFM LIMITATIONS
+
+AIR DATA INERTIAL REFERENCE UNIT (ADIRU)
+
+ADIRU alignment must not be attempted at latitudes greater than 78
+degrees 15 minutes.
+
+All flight operations based on magnetic heading or magnetic track
+angle are prohibited in geographic areas where the installed IRS
+MagVar table errors are greater than 5 degrees.
+
+Refer to AFM Normal Procedures/Inertial Reference System section
+for procedures to determine the geographic areas and magnitude of
+MagVar errors for the specific MagVar table installed in the IRS
+and if any of these limitations apply.
+
+For Fail-Operational          Autopilot, all autopilot/flight director ILS
+approach and landing         operations that use magnetic north referenced
+courses or bearings          are prohibited in geographic areas where the
+installed IRS MagVar         table errors are greater than 3 degrees.
+
+
+
+
+SUL LINHAS AÉREAS VIRTUAIS        FOR SIMULATION ONLY             B737-L-001
+                                                                                     8
+
+
+LOOK-AHEAD TERRAIN ALERTING (GPES)
+
+Do not use the terrain display for navigation.
+
+Do not use the look-ahead terrain alerting and terrain display
+functions:
+   ●​ within 15 nm of takeoff, approach or landing at an airport
+      not contained in the GPWS terrain database.
+
+NON-AFM OPERATIONAL INFORMATION
+
+# Avoid weather radar operation in a hangar.
+
+Avoid weather radar operation when personnel are within the area
+normally enclosed by the aircraft nose radome.
+
+NOTE: The hangar         recommendation    does       not   apply   to   the weather
+radar test mode.
+
+FUEL
+
+AFM LIMITATIONS
+
+Maximum tank fuel temperature: 49°C.
+
+Minimum inflight take fuel temperature: 3°C above the freezing
+point of the fuel being used or -43°C, whichever is higher.
+
+NOTE: The use of Fuel System Icing Inhibitor additives does not
+change the minimum fuel tank temperature limit.
+
+Intentional dry running of a center tank fuel pump (low pressure
+light illuminated) is prohibited.
+
+FUEL BALANCE
+
+Lateral imbalance between main tanks 1 and 2 must be scheduled to
+be zero. Random fuel imbalance must not exceed 453 kgs for taxi,
+takeoff, flight, or landing.
+
+FUEL LOADING
+
+Main tanks 1 and 2 must be full if the center tank contains more
+than 453 kgs.
+
+LANDING GEAR
+
+NON-AFM OPERATIONAL INFORMATION
+
+Do not apply brakes until after touchdown.
+
+
+
+
+SUL LINHAS AÉREAS VIRTUAIS      FOR SIMULATION ONLY                         B737-L-001
+
