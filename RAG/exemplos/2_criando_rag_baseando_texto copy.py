@@ -11,8 +11,7 @@ load_dotenv()
 embeddings = OpenAIEmbeddings(api_key=os.getenv("OPENAI_API_KEY"))
 llm = ChatOpenAI(
     api_key=os.getenv("OPENAI_API_KEY"), 
-    model="gpt-4-turbo-preview", 
-    temperature=0
+    model="o3-mini-2025-01-31"
 )
 
 # Caminhos para os arquivos de texto
