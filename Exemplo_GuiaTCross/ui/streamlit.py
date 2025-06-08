@@ -51,17 +51,14 @@ class GoogleAnalytics:
           }});
         </script>"""
 
-       ga_code += """
-       <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF6PYQCV15"></script>
+        ga_code += """<script async src="https://www.googletagmanager.com/gtag/js?id=G-TF6PYQCV15"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'G-TF6PYQCV15');
-        </script>
-    """
-        """
+        </script>"""
         
         components.html(ga_code, height=0)
     
