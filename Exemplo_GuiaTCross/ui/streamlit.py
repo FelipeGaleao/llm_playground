@@ -1063,7 +1063,7 @@ def main():
         # Renderizar componentes
         render_sidebar()
         render_main_chat()
-        
+        get_analytics()
         # Área de input
         user_input, send_button, ano, versao = render_input_area()
         
