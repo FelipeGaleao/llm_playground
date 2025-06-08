@@ -17,7 +17,7 @@ import uuid
 
 
 # Configuração do Google Analytics
-GOOGLE_ANALYTICS_ID = "G-XXXXXXXXXX"  # Substitua pelo seu ID do GA4
+GOOGLE_ANALYTICS_ID = "G-TF6PYQCV15"  # Substitua pelo seu ID do GA4
 
 
 class GoogleAnalytics:
