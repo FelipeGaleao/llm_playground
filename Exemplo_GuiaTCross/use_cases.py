@@ -5,8 +5,8 @@ Seguindo princípios de Clean Architecture
 import uuid
 from datetime import datetime
 from typing import List, Optional
-from entities import Message, ChatSession, MessageRole, AIModelConfig
-from adapter import AIService
+from .entities import Message, ChatSession, MessageRole, AIModelConfig
+from .adapter import AIService
 
 
 class ChatUseCase:
@@ -123,8 +123,8 @@ class ModelConfigUseCase:
                 return config
         return None
     
-    def update_config(self, name: str, temperature: float,
-                      max_tokens: int) -> bool:
+    def update_config(self, name: str, temperature: float, 
+                     max_tokens: int) -> bool:
         """Atualiza configuração de um modelo"""
         config = self.get_config_by_name(name)
         if config:

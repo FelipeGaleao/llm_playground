@@ -459,7 +459,7 @@ def main():
     st.info(
         "💡 **Como usar:** Digite sua pergunta e pressione Enter ou "
         "clique em Enviar\n\n"
-        "🚗 **T-Cross Assistant** | 🤖 Powered by AI | **Volkswagen**"
+        "🚗 **T-Cross Assistant** | 🤖 Powered by linkedin.com/in/mfelipemota | **Volkswagen**"
     )
 
 

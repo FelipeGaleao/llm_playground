@@ -15,7 +15,7 @@ class ChatUseCase:
     def __init__(self, ai_service: AIService):
         self.ai_service = ai_service
         self.current_session: Optional[ChatSession] = None
-        self.default_model = "GPT-3.5-turbo"  # Modelo fixo
+        self.default_model = "o1"  # Modelo fixo
     
     def start_new_session(self, model: str = None) -> ChatSession:
         """Inicia uma nova sessão de chat"""

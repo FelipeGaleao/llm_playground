@@ -6,6 +6,20 @@ import time
 import random
 from typing import Dict, List, Optional
 from abc import ABC, abstractmethod
+from pathlib import Path
+from openai import OpenAI
+import streamlit as st
+
+# Importações para embeddings (opcionais)
+try:
+    from langchain_community.vectorstores import FAISS
+    from langchain_openai import OpenAIEmbeddings
+    from langchain.text_splitter import RecursiveCharacterTextSplitter
+    LANGCHAIN_AVAILABLE = True
+    print("Langchain está instalado")
+except ImportError:
+    print("Langchain não está instalado")
+    LANGCHAIN_AVAILABLE = False
 
 
 class AIProviderInterface(ABC):
@@ -23,27 +37,152 @@ class AIProviderInterface(ABC):
 
 
 class OpenAIAdapter(AIProviderInterface):
-    """Adapter para OpenAI API"""
+    """Adapter para OpenAI API com suporte a embeddings"""
     
     def __init__(self, api_key: Optional[str] = None):
         self.api_key = api_key
         self.available_models = [
-            "GPT-3.5-turbo", 
-            "GPT-4", 
-            "GPT-4-turbo"
+            "o1"
         ]
+        self.vector_store = None
+        self.embeddings_cache_dir = Path("embeddings_cache")
+        self.embeddings_cache_dir.mkdir(exist_ok=True)
+        self.documents_dir = Path("documents")
+        
+        # Inicializa embeddings se LangChain estiver disponível
+        if LANGCHAIN_AVAILABLE and api_key:
+            self.embeddings = OpenAIEmbeddings(api_key=api_key)
+            self.text_splitter = RecursiveCharacterTextSplitter(
+                chunk_size=1000,
+                chunk_overlap=200
+            )
+            self._load_or_create_embeddings()
+    
+    def _load_or_create_embeddings(self):
+        """Cache inteligente: carrega embeddings existentes ou cria novos"""
+        cache_path = self.embeddings_cache_dir / "tcross_embeddings"
+        
+        # Tenta carregar embeddings existentes
+        if cache_path.exists():
+            try:
+                self.vector_store = FAISS.load_local(
+                    str(cache_path), 
+                    self.embeddings,
+                    allow_dangerous_deserialization=True
+                )
+                print("✅ Embeddings carregados do cache")
+                return
+            except Exception as e:
+                print(f"⚠️ Erro ao carregar embeddings do cache: {e}")
+        
+        # Se não conseguir carregar, cria novos embeddings
+        self._create_embeddings_from_txt_files()
+    
+    def _create_embeddings_from_txt_files(self):
+        """Cria embeddings a partir de arquivos .txt na pasta documents"""
+        if not self.documents_dir.exists():
+            self.documents_dir.mkdir()
+            print("📁 Pasta 'documents' criada. "
+                  "Adicione arquivos .txt lá para usar embeddings.")
+            return
+        
+        txt_files = list(self.documents_dir.glob("*.txt"))
+        if not txt_files:
+            print("📄 Nenhum arquivo .txt encontrado na pasta 'documents'")
+            return
+        
+        # Carrega todos os documentos
+        all_texts = []
+        for file_path in txt_files:
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                    # Adiciona metadados
+                    filename = file_path.name
+                    content_with_metadata = (f"[ARQUIVO: {filename}]\n"
+                                           f"{content}")
+                    
+                    # Divide em chunks
+                    chunks = self.text_splitter.split_text(
+                        content_with_metadata)
+                    all_texts.extend(chunks)
+                    
+                print(f"📖 Processado: {filename}")
+            except Exception as e:
+                print(f"❌ Erro ao processar {file_path}: {e}")
+        
+        if all_texts:
+            try:
+                # Cria vector store
+                self.vector_store = FAISS.from_texts(
+                    all_texts, self.embeddings)
+                
+                # Salva no cache
+                cache_path = self.embeddings_cache_dir / "tcross_embeddings"
+                self.vector_store.save_local(str(cache_path))
+                
+                print(f"✅ Embeddings criados com {len(all_texts)} chunks "
+                      f"e salvos no cache")
+            except Exception as e:
+                print(f"❌ Erro ao criar embeddings: {e}")
+    
+    def _get_context_from_embeddings(self, message: str, k: int = 3) -> str:
+        """Busca contexto relevante nos embeddings"""
+        if not self.vector_store:
+            return ""
+        
+        try:
+            docs = self.vector_store.similarity_search(message, k=k)
+            if docs:
+                context_parts = [doc.page_content for doc in docs]
+                return ("\n\nCONTEXTO DOS DOCUMENTOS:\n" + 
+                        "\n---\n".join(context_parts))
+        except Exception as e:
+            print(f"⚠️ Erro na busca por similaridade: {e}")
+        
+        return ""
     
     def generate_response(self, message: str, model: str) -> str:
         """
-        Gera resposta usando OpenAI API
-        Por enquanto simula a resposta para demonstração
+        Gera resposta usando OpenAI API com contexto de embeddings
         """
-        # Simula tempo de processamento da API
-        time.sleep(random.uniform(0.5, 2.0))
+        client = OpenAI(api_key=self.api_key)
         
-        # Aqui você integraria com a OpenAI API real
-        # import openai
-        # response = openai.ChatCompletion.create(...)
+        # Busca contexto relevante nos embeddings
+        context = (self._get_context_from_embeddings(message) 
+                   if LANGCHAIN_AVAILABLE else "")
+        
+        # Prepara mensagens do sistema
+        messages = [
+            {"role": "system", 
+             "content": "Você é um engenheiro da Volkswagen que responde "
+                        "perguntas sobre o VW T-Cross."},
+            {"role": "system", 
+             "content": f"O carro atualmente selecionado é um VW T-Cross "
+                        f"{st.session_state.ano_veiculo} "
+                        f"{st.session_state.versao_veiculo}"},
+            {"role": "system", 
+             "content": "Você deve responder apenas perguntas sobre o "
+                        "VW T-Cross, caso seja sobre um outro carro ou um "
+                        "outro contexto, diga que você não pode responder."}
+        ]
+        
+        # Adiciona contexto dos documentos se disponível
+        if context:
+            messages.append({
+                "role": "system", 
+                "content": f"Use as informações dos documentos abaixo "
+                           f"como referência para suas respostas:{context}"
+                           f"Não responda nenhuma pergunta cujo a resposta não esteja no contexto dos documentos."
+            })
+        
+        messages.append({"role": "user", "content": message})
+        
+        response = client.chat.completions.create(
+            model=model,
+            messages=messages
+        )
+        return response.choices[0].message.content
         
         return self._simulate_openai_response(message, model)
     
@@ -116,7 +255,9 @@ class ClaudeAdapter(AIProviderInterface):
     
     def __init__(self, api_key: Optional[str] = None):
         self.api_key = api_key
-        self.available_models = ["Claude-3", "Claude-3-Sonnet", "Claude-3-Opus"]
+        self.available_models = [
+            "Claude-3", "Claude-3-Sonnet", "Claude-3-Opus"
+        ]
     
     def generate_response(self, message: str, model: str) -> str:
         """Gera resposta usando Claude API"""
