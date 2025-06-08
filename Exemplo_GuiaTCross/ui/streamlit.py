@@ -49,16 +49,18 @@ class GoogleAnalytics:
           gtag('config', '{self.ga_id}', {{
             'custom_map': {{'custom_session_id': 'session_id'}}
           }});
+        </script>"""
+
+       ga_code += """
+       <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF6PYQCV15"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-TF6PYQCV15');
         </script>
-
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TF6PYQCV15"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-TF6PYQCV15');
-</script>
+    """
         """
         
         components.html(ga_code, height=0)
