@@ -72,4 +72,5 @@ def inject_ga():
         new_html = html.replace('<head>', '<head>\n' + analytics_js) 
         index_path.write_text(new_html) # insert analytics tag at top of head
 if __name__ == "__main__":
+    inject_ga()
     main()
