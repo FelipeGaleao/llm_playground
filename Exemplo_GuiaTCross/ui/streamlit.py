@@ -15,9 +15,8 @@ import logging
 import streamlit.components.v1 as components
 import uuid
 
-
 # Configuração do Google Analytics
-GOOGLE_ANALYTICS_ID = "G-TF6PYQCV15"  # Substitua pelo seu ID do GA4
+GOOGLE_ANALYTICS_ID = "G-TF6PYQCV15"
 
 
 class GoogleAnalytics:
@@ -26,41 +25,12 @@ class GoogleAnalytics:
     def __init__(self, ga_id: str):
         self.ga_id = ga_id
         self.session_id = self._get_session_id()
-        self._inject_ga_code()
     
     def _get_session_id(self) -> str:
         """Gera ou recupera ID da sessão"""
         if "ga_session_id" not in st.session_state:
             st.session_state.ga_session_id = str(uuid.uuid4())
         return st.session_state.ga_session_id
-    
-    def _inject_ga_code(self):
-        """Injeta o código do Google Analytics na página"""
-        if not self.ga_id or self.ga_id == "G-XXXXXXXXXX":
-            return
-        
-        ga_code = f"""
-        <!-- Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id={self.ga_id}"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){{dataLayer.push(arguments);}}
-          gtag('js', new Date());
-          gtag('config', '{self.ga_id}', {{
-            'custom_map': {{'custom_session_id': 'session_id'}}
-          }});
-        </script>"""
-
-        ga_code += """<script async src="https://www.googletagmanager.com/gtag/js?id=G-TF6PYQCV15"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-TF6PYQCV15');
-        </script>"""
-        
-        components.html(ga_code, height=0)
     
     def track_page_view(self, page_title: str = "T-Cross Assistant"):
         """Rastreia visualização de página"""
@@ -1054,9 +1024,37 @@ class SecurityLogger:
         self.logger.warning(log_msg)
 
 
+def inject_google_analytics():
+    """Injeta o código do Google Analytics usando um componente personalizado"""
+    ga_js = f"""
+    <script async src="https://www.googletagmanager.com/gtag/js?id={GOOGLE_ANALYTICS_ID}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){{dataLayer.push(arguments);}}
+        gtag('js', new Date());
+        gtag('config', '{GOOGLE_ANALYTICS_ID}');
+    </script>
+    """
+    
+    # Criar componente personalizado
+    components.html(
+        f"""
+        <div id="google-analytics-container" style="display:none;">
+            {ga_js}
+        </div>
+        """,
+        height=0,
+        width=0
+    )
+
+
 def main():
     """Função principal da aplicação"""
     try:
+
+        # Injetar Google Analytics
+        inject_google_analytics()
+        
         # Inicializar estado da sessão
         initialize_session_state()
         
@@ -1064,6 +1062,7 @@ def main():
         render_sidebar()
         render_main_chat()
         get_analytics()
+        
         # Área de input
         user_input, send_button, ano, versao = render_input_area()
         

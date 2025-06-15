@@ -1,0 +1,16 @@
+[theme]
+primaryColor = "#005ea6"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#f8f9fa"
+textColor = "#000000"
+font = "Arial"
+
+[server]
+enableCORS = false
+enableXsrfProtection = false
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal" 

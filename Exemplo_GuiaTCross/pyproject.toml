@@ -10,4 +10,5 @@ dependencies = [
     "langchain-openai>=0.3.21",
     "openai>=1.84.0",
     "streamlit>=1.45.1",
+    "beautifulsoup4",
 ]
