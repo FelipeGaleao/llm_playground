@@ -1,0 +1,170 @@
+{
+  "eval_set_id": "eval_set_1",
+  "name": "eval_set_1",
+  "eval_cases": [
+    {
+      "eval_id": "caso_1_solicitacao_incompleta",
+      "conversation": [
+        {
+          "invocation_id": "inv_1_incompleto",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Tráfego São Paulo, TAM 3118, bom dia, solicito plano de voo para Salvador."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "{\"Message\": \"TAM 3118, informe posição/pátio, nível de voo solicitado e confirmação da informação ATIS atual.\"}"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "clearence",
+        "user_id": "user",
+        "state": {
+          "flight_phase": "request_flight_plan"
+        }
+      }
+    },
+    {
+      "eval_id": "caso_2_dados_completos_awaiting_copy",
+      "conversation": [
+        {
+          "invocation_id": "inv_2_completo",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Tráfego São Paulo, TAM 3118 no pátio 2, informação Bravo, pronto para cópia para Salvador no FL350."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "{\"Message\": \"TAM 3118, pronto para cópia?\"}"
+              }
+            ],
+            "role": "model"
+          }
+        },
+        {
+          "invocation_id": "inv_2_pronto_copia",
+          "user_content": {
+            "parts": [
+              {
+                "text": "TAM 3118, pronto para cópia."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "{\"Message\": \"TAM 3118, autorizado Salvador, rota do plano de voo, nível de voo 350, saída padrão, transponder 4521. Coteje.\"}"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "clearence",
+        "user_id": "user",
+        "state": {
+          "flight_phase": "request_flight_plan"
+        }
+      }
+    },
+    {
+      "eval_id": "caso_3_autorizacao_aprovada_e_cotejamento",
+      "conversation": [
+        {
+          "invocation_id": "inv_3_emissao",
+          "user_content": {
+            "parts": [
+              {
+                "text": "TAM 3118, pronto para cópia."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "{\"Message\": \"TAM 3118, autorizado Salvador via plano de voo, saída padrão, nível inicial FL100, transponder 4521. Coteje.\"}"
+              }
+            ],
+            "role": "model"
+          }
+        },
+        {
+          "invocation_id": "inv_3_cotejamento",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Autorizado Salvador plano de voo, saída padrão, nível inicial FL100, transponder 4521, TAM 3118."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "{\"Message\": \"TAM 3118, cotejamento correto.\"}"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "clearence",
+        "user_id": "user",
+        "state": {
+          "flight_phase": "awaiting_copy",
+          "callsign": "TAM 3118"
+        }
+      }
+    },
+    {
+      "eval_id": "caso_4_plano_recusado",
+      "conversation": [
+        {
+          "invocation_id": "inv_4_recusa",
+          "user_content": {
+            "parts": [
+              {
+                "text": "TAM 3118, pronto cópia rota direta pelo litoral abaixo do nível mínimo."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "{\"Message\": \"TAM 3118, plano de voo recusado, impossível rota solicitada. Solicite revisão junto à Sala AIS.\"}"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "clearence",
+        "user_id": "user",
+        "state": {
+          "flight_phase": "awaiting_copy",
+          "callsign": "TAM 3118"
+        }
+      }
+    }
+  ]
+}

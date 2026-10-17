@@ -1,0 +1,9 @@
+[project]
+name = "trafegoaereo"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "google-adk[eval]>=2.12.0",
+]
