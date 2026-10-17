@@ -1,0 +1,140 @@
+{
+  "eval_set_id": "eval_set_1",
+  "name": "eval_set_1",
+  "eval_cases": [
+    {
+      "eval_id": "caso_1_corrigir_bug_divisao_implicito",
+      "conversation": [
+        {
+          "invocation_id": "inv_1_bug_divisao",
+          "user_content": {
+            "parts": [
+              {
+                "text": "A função divide está com bug e calculando errado. Corrija o problema e rode os testes."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "A função `divide` no arquivo `calculator.py` foi corrigida para realizar a divisão (`a / b`). Os testes foram executados com sucesso e passaram."
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "codereviewer",
+        "user_id": "user",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "caso_2_buscar_funcao_sem_nome_de_arquivo",
+      "conversation": [
+        {
+          "invocation_id": "inv_2_busca_funcao",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Onde está definida a função add e o que ela faz?"
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "A função `add` está localizada no arquivo `calculator.py` e realiza a soma de dois parâmetros (`a + b`)."
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "codereviewer",
+        "user_id": "user",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "caso_3_execucao_direta_de_testes",
+      "conversation": [
+        {
+          "invocation_id": "inv_3_rodar_testes",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Execute os testes do projeto e me diga se há alguma falha."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "Os testes do projeto foram executados."
+              }
+            ],
+            "role": "model"
+          },
+          "intermediate_data": {
+            "invocation_events": [
+              {
+                "author": "coding_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "name": "run_tests",
+                        "args": {}
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "codereviewer",
+        "user_id": "user",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "caso_4_adicionar_nova_funcao_com_testes",
+      "conversation": [
+        {
+          "invocation_id": "inv_4_nova_funcao",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Adicione a função `multiply(a, b)` na calculadora e execute os testes para validar."
+              }
+            ],
+            "role": "user"
+          },
+          "final_response": {
+            "parts": [
+              {
+                "text": "A função `multiply(a, b)` foi adicionada em `calculator.py` e os testes foram executados com sucesso."
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "codereviewer",
+        "user_id": "user",
+        "state": {}
+      }
+    }
+  ]
+}
